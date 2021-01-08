@@ -1,23 +1,44 @@
 require('./bootstrap');
 
 import Vue from 'vue'
-import App from './vue/app'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPlusSquare,faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-import Login from './Login/app'
 
+import Router from 'vue-router'
+
+Vue.use(Router)
+
+import Test from './Todo'
+import Todo from './vue/app.vue'
+import Login from './Login/app.vue'
 library.add(faPlusSquare,faTrash)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+// import VueRouter from 'vue-router';
+// Vue.use(Router)
 
-const app = new Vue({
+
+const router = new Router({
+    mode: 'history',
+    routes: [
+        {
+            path: '/',
+            name: 'Login',
+            component: Login 
+        },
+        {
+            path: '/Todo',
+            name: 'Todo',
+            component: Todo 
+        },
+    ],
+});
+
+const test = new Vue({
     el:'#app',
-    components: { App }
+    components: { Login },
+    router
 });
 
-const login = new Vue({
-    el:'#login',
-    components: { Login }
-});

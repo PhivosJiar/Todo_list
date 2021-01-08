@@ -38,7 +38,7 @@ class LoginController extends Controller
     {
     $username =$request->item["username"];
     $pwd  =$request->item["pwd"];
-    $Item = Member::where('username', $username)->where('pwd',$pwd)->get();
+    $Item = Member::where('username', $username)->where('pwd',$pwd)->get("username");
     // if
     return $Item;
     }

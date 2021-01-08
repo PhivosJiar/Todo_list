@@ -49,10 +49,17 @@
   </div>
 </nav>   
         <div id="app">
-            <app> </app>
-        
-        </div>
+          
+        <router-link to="/">Login</router-link>
+        <router-link to="/Todo">about</router-link>
+        <router-link :to="{ name: 'Login' }">Login</router-link> |
+        <router-link :to="{ name: 'Todo' }">Todo World</router-link>
+        <test></test>
+       
 
+        <router-view></router-view>
+
+        </div>
         <!-- <a href="https://github.com/PhivosJiar/Todo_list" >12345</a> -->
     </body>
 

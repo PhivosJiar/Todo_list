@@ -1,5 +1,6 @@
 <template> 
 <div>
+
   <login></login>
   <signup></signup>
 </div>

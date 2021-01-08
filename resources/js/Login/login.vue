@@ -21,8 +21,8 @@
     <div v-for="(item,index) in Verification.pass" :key="index">
            
     <div class="item">
-        <a v-bind:href="[item.username? 'https://ithelp.ithome.com.tw/articles/10204943' :'#']">a</a>
-        <span>{{item.username}}</span>    
+        <a v-bind:href="[item.username? GOTO() :'#']">a</a>
+        <span >{{item.username}}</span>    
     </div>
     </div>
  
@@ -32,6 +32,9 @@
 
 <script>
 import Login2 from './login2.vue';
+
+
+
 
 export default {
     components:{
@@ -44,7 +47,8 @@ export default {
                 pwd:"",
             },
             Verification:{
-                pass:""
+                pass:"",
+                pass2:""
             
             }
         }
@@ -60,13 +64,17 @@ export default {
         })
         .then(response=>{
         this.Verification.pass=response.data
-   
-  
         })
         .catch(error =>{
             console.log(error);
         })        
 
+        },
+        GOTO(){
+           axios.get('web/todo')
+            .catch(error=> {
+            console.log(error);
+            })
         }
         
     }
