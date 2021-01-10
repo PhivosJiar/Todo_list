@@ -13,9 +13,16 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
+        Schema::create('members', function (Blueprint $table) {
+            $table->string('username')->unique();
+            $table->string('pwd');
+            $table->timestamps();
+        });
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('username');
+            $table->foreign('username')->references('username')->on('members');
             $table->boolean('completed')->default(false);
             $table->timestamp('completed_at')->nullable(); 
             $table->timestamps();

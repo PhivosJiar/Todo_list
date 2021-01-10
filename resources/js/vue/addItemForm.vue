@@ -14,7 +14,8 @@ export default {
     data:function(){
         return {
             item:{
-                name:""
+                name:"",
+                username:this.$route.query.userId
             }
         }
     },

@@ -1,6 +1,6 @@
 <template>
     <div class="todoListContainer">
-        
+    
         <div class="heading">
             <h2 id="title">TodoList</h2> 
                 <add-item-form v-on:reloadlist="getList()" />
@@ -12,26 +12,26 @@
 
 <script>
 import addItemForm from './addItemForm.vue'
-import ListItem from './listItem.vue'
 import Listview from './listview.vue'
-
-
-
 
 export default {
     components:{
         addItemForm,
-        ListItem,
         Listview,
     },
     data:function(){
         return{
-            items:[]
+            items:[],
+            member:{
+                username:"aaa"
+            },
         }
     },
     methods:{
         getList(){
-            axios.get('api/items')
+            axios.post('api/items',{
+                item:this.member
+            })
             .then(response=> {
                 this.items = response.data
             })
@@ -50,14 +50,11 @@ export default {
 .todoListContainer{
     width:350px;
     margin:auto;
-
 }
-
 .heading{
     background: #e6e6e6;
     padding: 10px;
 }
-
 #title{
     text-align:center;
 }

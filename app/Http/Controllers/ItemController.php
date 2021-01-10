@@ -13,9 +13,13 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Item::orderBy('created_at','DESC')->get();
+        $username =$request->item["username"];
+        // $username = $request->item["username"];
+        // where('username', $username)->
+        $Item =Item::where('username', $username)->orderBy('created_at','DESC')->get();
+        return $Item;
     }
 
     /**
@@ -38,6 +42,7 @@ class ItemController extends Controller
     {
         $newItem = new Item;
         $newItem->name =$request->item["name"];
+        $newItem->username =$request->item["username"];
         $newItem->save();
 
         return $newItem;
