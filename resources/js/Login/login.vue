@@ -148,7 +148,6 @@ span.psw {
   padding-top: 16px;
 }
 
-
 @media screen and (max-width: 300px) {
   span.psw {
     display: block;
