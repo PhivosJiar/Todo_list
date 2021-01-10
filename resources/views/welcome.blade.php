@@ -11,56 +11,80 @@
 
     </head>
     <style>
+     /*the menu nav bar start ------->*/
+     html,body{
+     width:100%;
+     height: 100%; 
+     margin:0 ;
+     padding: 0;
+     border:0;
+     background:#000000;
+     }
      
+    .leftnav{
+      float:left;
+      margin-top:0;
+      width:15%;
+      height:100%;
+      background-image: url("https://img.onl/eptmZi");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .leftmask{
+      float:left;
+      margin-top:0;
+      width:100%;
+      height:100%;
+      background:rgba(7,34,62,.6);
+    }
+    .rightview{
+      width:85%;
+      margin-left:15%;
+      margin-top:0;
+      height:100%;
+      background:#dcdcdc;
+    }
+    .menucontainer{
+      color:white;
+    }
+    li{
+    width: 94px;
+    text-align: left;
+    list-style: none;
+    }
+    #app{
+      height:100%;
+    }
 
     </style>
-    <body >
-    
-    <nav class="navbar navbar-expand-lg navbar-light "  style="background-color: #e3f2fd;">
-  <div class="container-fluid">
-    <img src="https://i.ibb.co/wzB7vmK/notes.png" alt="notes" border="0" width="32px" style="margin:auto px" >
-  
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-        <li class="nav-item">
-          <a class="nav-link"  href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="https://github.com/PhivosJiar/Todo_list" style="
-    padding-left: 15px;
-    padding-top: 7px;
-"><img  src="https://cdn.iconscout.com/icon/free/png-256/github-153-675523.png" width="20px"  border="0"></a>
-        </li>
-      </ul>
+    <body leftmargin = 0 topmargin = 0>
+    <div class="leftnav"> 
+    <div class="leftmask">
+<div class="menucontainer">
+        <nav class="menu">
+            <a id="menubtn" class="toggle-nav" href="#">☰</a>
+            <div class="menu-logo"><a>LOGO</a></div>
+            <ul id="menuUl" class="">
+                <li class="current-active"><a>home</a></li>
+                <li><a>new</a></li>
+                <li><a>products</a></li>
+                <li><a>about</a></li>
+            </ul>
+        </nav>
+</div>
     </div>
   </div>
-</nav>   
-        <div id="app">
+    <div class="rightview">
+        <div id="app" >
           
-        <router-link to="/">Login</router-link>
-        <router-link to="/Todo">about</router-link>
-        <router-link :to="{ name: 'Login' }">Login</router-link> |
-        <router-link :to="{ name: 'Todo' }">Todo World</router-link>
-        <test></test>
+
        
 
-        <router-view></router-view>
+        <router-view ></router-view>
 
         </div>
         <!-- <a href="https://github.com/PhivosJiar/Todo_list" >12345</a> -->
+  </div>
     </body>
 
     <script src="{{ mix('js/app.js') }}"></script>

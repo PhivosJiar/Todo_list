@@ -1,6 +1,6 @@
 <template>
     <div class="todoListContainer">
-        
+    
         <div class="heading">
             <h2 id="title">TodoList</h2> 
                 <add-item-form v-on:reloadlist="getList()" />
@@ -21,12 +21,17 @@ export default {
     },
     data:function(){
         return{
-            items:[]
+            items:[],
+            member:{
+                username:"aaa"
+            },
         }
     },
     methods:{
         getList(){
-            axios.get('api/items')
+            axios.post('api/items',{
+                item:this.member
+            })
             .then(response=> {
                 this.items = response.data
             })

@@ -1,8 +1,9 @@
 <template> 
-<div>
+
+<div class="loginbg"> 
 
   <login></login>
-  <signup></signup>
+ 
 </div>
 </template>
 
@@ -18,3 +19,11 @@ export default {
 
 }
 </script>
+
+<style scoped>
+.loginbg{
+  background:#ffffff;
+  height:100%;
+  padding-top: 8%;
+}
+</style>

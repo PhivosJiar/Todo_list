@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="loginbg">
   <div class="imgcontainer">
     <img src="https://i.ibb.co/wzB7vmK/notes.png" >
     <br>
@@ -8,6 +8,7 @@
 
 
   <div class="container">
+      
     <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" required
     v-model="member.username" />
@@ -25,7 +26,12 @@
         <span >{{item.username}}</span>    
     </div>
     </div>
+    
  
+      <div class="container" style="background-color:#f1f1f1">
+    <span class="psw"><a href="#" @click="ToSignup()">Signup </a></span>
+  </div>
+
   </div>
 </div>
 </template>
@@ -64,6 +70,10 @@ export default {
         })
         .then(response=>{
         this.Verification.pass=response.data
+        if(this.Verification.pass != ''){
+            //this.$router.push('/todo')
+            this.$router.push({ path: '/todo', query: { userId: this.member.username }})
+        }
         })
         .catch(error =>{
             console.log(error);
@@ -75,8 +85,10 @@ export default {
             .catch(error=> {
             console.log(error);
             })
+        },
+        ToSignup(){
+            this.$router.push('/Signup')      
         }
-        
     }
 }
 </script>
@@ -84,9 +96,10 @@ export default {
 <style scoped>
 form {
   border: 3px solid #f1f1f1;
+ 
 }
 
-/* Full-width inputs */
+
 input[type=text], input[type=password] {
   width: 100%;
   padding: 12px 20px;
@@ -96,7 +109,7 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
+
 button {
   background-color: #4CAF50;
   color: white;
@@ -107,42 +120,35 @@ button {
   width: 100%;
 }
 
-/* Add a hover effect for buttons */
+
 button:hover {
   opacity: 0.8;
 }
 
-/* Extra style for the cancel button (red) */
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
 
-/* Center the avatar image inside this container */
 .imgcontainer {
   text-align: center;
-  margin: 24px 0 12px 0;
+  margin: 0;
 }
 
-/* Avatar image */
+
 img.avatar {
   width: 40%;
   border-radius: 50%;
 }
 
-/* Add padding to containers */
+
 .container {
   padding: 16px;
 }
 
-/* The "Forgot password" text */
+
 span.psw {
   float: right;
   padding-top: 16px;
 }
 
-/* Change styles for span and cancel button on extra small screens */
+
 @media screen and (max-width: 300px) {
   span.psw {
     display: block;

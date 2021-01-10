@@ -44,12 +44,13 @@ class LoginController extends Controller
     }
     public function signup(Request $request)
     {
-        $newItem = new Member;
-        $newItem->username =$request->member["username"];
-        $newItem->pwd  =$request->member["pwd"];
-        $newItem->save();
-
-        return $newItem;
+        $newMember = new Member;
+        $newMember->username =$request->item["username"];
+        $newMember->pwd  =$request->item["pwd"];
+        $newMember->save();
+        
+        $SignStatus = "Signup Successfully.";
+        return $SignStatus;
     }
     /**
      * Display the specified resource.

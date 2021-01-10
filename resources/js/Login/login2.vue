@@ -108,6 +108,10 @@ span.psw {
   padding-top: 16px;
 }
 
+.item{
+  /* padding: 16px; */
+}
+
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
