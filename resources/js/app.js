@@ -14,6 +14,8 @@ import Test from './Todo'
 import Todo from './vue/app.vue'
 import Login from './Login/app.vue'
 import Signup from './Login/signup.vue'
+import Completed from './vue/findCompleted'
+import InCompleted from './vue/inCompleted.vue'
 library.add(faPlusSquare,faTrash)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
@@ -38,6 +40,16 @@ const router = new Router({
             path:'/Signup',
             name:'Signup',
             component: Signup
+        },
+        {
+            path:'/Completed',
+            name:'Completed',
+            component: Completed
+        },
+        {
+            path:'/InCompleted',
+            name:'InCompleted',
+            component: InCompleted
         }
     ],
 });

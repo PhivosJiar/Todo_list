@@ -1,20 +1,18 @@
 <template>
-
 <div class="todo">
     <leftdiv></leftdiv>
-  <span class="top">．</span>
-  <div class="rightview">
-
-    <div class="todoListContainer">
-        <div class="heading">
-            <h2 id="title">TodoList</h2> 
-                <add-item-form v-on:reloadlist="getList()" />
-        </div>
-        <div  class="listitem">
-        <listview :items="items" v-on:reloadlist="getList() " />
-        </div>
-    </div>
-  </div>
+        <span class="top">．</span>
+            <div class="rightview">
+                <div class="todoListContainer">
+                    <div class="heading">
+                        <h2 id="title">TodoList</h2> 
+                            <add-item-form v-on:reloadlist="getList()" />
+                    </div>
+                        <div  class="listitem">
+                            <listview :items="items" v-on:reloadlist="getList() " />
+                        </div>
+                </div>
+            </div>
 </div>
 </template>
 
@@ -39,7 +37,7 @@ export default {
     },
     methods:{
         getList(){
-            axios.post('api/items',{
+            axios.post('api/item/completed',{
                 item:this.member
             })
             .then(response=> {

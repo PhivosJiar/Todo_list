@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<template>
+      <div class="leftnav"> 
+    <div class="leftmask">
+      <div class="menucontainer">
+        <nav class="menu">
+           
+            <div class="menu-logo"><a>To Do</a></div>
+            <ul  class="menu-box">
+              Welcome <br>To <br>Todo List
+            </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</template>
 
-        <title>Laravel</title>
+<style scoped>
 
-   
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-    </head>
-    <style>
      /*the menu nav bar start ------->*/
      html,body{
      width:100%;
@@ -18,7 +23,7 @@
      margin:0 ;
      padding: 0;
      border:0;
-     background:#f8fafc;
+     background:#000000;
      }
      
     .leftnav{
@@ -42,7 +47,7 @@
       margin-left:15%;
       margin-top:0;
       height:100%;
-      background:#f8fafc;
+      background:#dcdcdc;
     }
     .menucontainer{
       color:white;
@@ -70,8 +75,7 @@
     text-decoration:none;
     }
     .menu-box{
-      padding-left:8px;
-      padding-right:8px;
+      text-align:center;
     }
     .menu-logo{
       font-size:20px;
@@ -81,18 +85,5 @@
       border-bottom:1px solid #07294a;
     }
    
-    </style>
-    
-<body >
-<div id="app" >
 
-    <!-- <div class="rightview"> -->
-        
-      <router-view ></router-view>
-
-    <!-- </div> -->
-</div>
-    </body>
-
-    <script src="{{ mix('js/app.js') }}"></script>
-</html>
+</style>

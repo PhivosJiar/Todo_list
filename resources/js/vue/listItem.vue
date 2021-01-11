@@ -1,12 +1,20 @@
 <template>
     <div class="item">
+        <td class="Itemlist">
         <input type="checkbox" @change="updateCheck()" v-model="item.completed" />
         <span :class="[item.completed ? 'completed' : '','itemText']">{{item.name}}</span>
+        </td>
         
+        <td class="Itemlist">
+        <span :class="[item.completed ? 'completed' : '','itemText']">{{item.username}}</span>
+        </td>
+
+        <td class="trash">
         <button @click="removeItem()" class="trashcan">
             <font-awesome-icon icon="trash" /> 
         </button>
-            
+        </td>
+  
     </div>
 </template>
 
@@ -62,5 +70,13 @@ export default {
     border: none;
     color: #ff0000;
     outline: none;
+}
+.Itemlist{
+  width: 50%;
+
+}
+tr{
+    width: 100%;
+    height: 100%;
 }
 </style>

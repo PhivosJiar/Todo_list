@@ -1,109 +1,81 @@
 <template>
-<div class="loginbg">
-  <div class="imgcontainer">
+<div class="signup">
+
+  <div class="loginbg">
+    <div class="imgcontainer">
     <img src="https://i.ibb.co/wzB7vmK/notes.png" >
     <br>
     <span>Todolist</span>
-  </div>
-
-
+    </div>
   <div class="container">
-      
+    
     <label for="uname"><b>Username</b></label>
-     <span class="err">
+    <span class="err">
     {{this.Verification.err}}
     </span>
     <input type="text" placeholder="Enter Username" name="uname" required
     v-model="member.username" />
 
-   
-
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required
     v-model="member.pwd" />
-    
-    <button type="submit" @click="ToLogin()" >Login</button>
+    <input type="password" placeholder="Confirm Password" name="psw" required
+    v-model="member.pwdchk" />
+    <button type="submit" @click="ToSignup()" >Signup</button>
 
-    <div v-for="(item,index) in Verification.pass" :key="index">
-           
-    <div class="item">
-        <a v-bind:href="[item.username? GOTO() :'#']">a</a>
-        <span >{{item.username}}</span>    
     </div>
-    </div>
-    
+  </div>
  
-      <div class="container" style="background-color:#ffffff">
-    <span class="psw"><a href="#" @click="ToSignup()">Signup </a></span>
-  </div>
 
   </div>
-</div>
 </template>
-
 <script>
-import Login2 from './login2.vue';
-
-
-
+import Leftdiv from './leftdiv.vue'
 
 export default {
     components:{
-        Login2
-    },
-    data:function(){
+      Leftdiv
+      },
+      data:function(){
         return {
             member:{
                 username:"",
                 pwd:"",
+                pwdchk:""
             },
             Verification:{
                 pass:"",
                 pass2:"",
                 err:""
-            
             }
         }
-    },
-    methods:{
-        ToLogin(){
+      },
+      methods:{
+        ToSignup(){
             if(this.member.username == '' || this.member.pwd == ''){
                 return;
+            }else if(this.member.pwd != this.member.pwdchk){
+              return this.Verification.err="Password Inconsistent";
             }
         
-        axios.post('api/login',{
+        axios.post('api/signup',{
             item:this.member
         })
         .then(response=>{
         this.Verification.pass=response.data
-        if(this.Verification.pass != ''){
-            //this.$router.push('/todo')
-            this.$router.push({ path: '/todo', query: { userId: this.member.username }})
-        }
-        this.Verification.err="Account or Password Incorrect.";
+        this.$router.push('/')
         })
         .catch(error =>{
             console.log(error);
-         
-        })        
-
-        },
-        GOTO(){
-           axios.get('web/todo')
-            .catch(error=> {
-            console.log(error);
-            })
-        },
-        ToSignup(){
-            this.$router.push('/Signup')      
-        }
-    }
+            return this.Verification.err="Username Already exists";
+        })   
+        }     
+      }
 }
 </script>
-
 <style scoped>
 form {
-  border: 3px solid #ffffff;
+  border: 3px solid #f1f1f1;
  
 }
 
@@ -149,15 +121,42 @@ img.avatar {
 .container {
   padding: 16px;
 }
+
+
 span.psw {
   float: right;
   padding-top: 16px;
 }
+
+.signup{
+  background:#ffffff;
+  height:100%;
+}
+
 .err{
   float:right;
   color:#ff0000;
 }
 
+.loginbg{
+  background:#ffffff;
+  height:50%;
+  padding-top: 8%;
+  width:80%;
+  margin:10% auto auto auto;
+  padding:1% 20% 2% 20%;
+}
+
+.rightview{
+  width:85%;
+  margin-left:15%;
+  margin-top:0;
+  height:60%;
+  background:#f8fafc;
+}
+.top{
+    color:#f8fafc;
+}
 @media screen and (max-width: 300px) {
   span.psw {
     display: block;
