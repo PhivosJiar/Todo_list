@@ -42,15 +42,23 @@
 <script>
 
 export default {
+    data:function(){
+        return{
+            member:{
+                username:this.$route.query.userId
+            },
+        }
+    },
     methods:{
         GoToTodo(){
-            this.$router.push('/Todo')     
+            this.$router.push({ path: '/Todo', query: { userId: this.member.username }})    
         },
         GoToCompleted(){
-            this.$router.push('/Completed')   
+            // this.$router.push('/Completed')   
+            this.$router.push({ path: '/Completed', query: { userId: this.member.username }})   
         },
         GoToinCompleted(){
-            this.$router.push('/inCompleted')   
+            this.$router.push({ path: '/inCompleted', query: { userId: this.member.username }})    
         },
         BackHome(){
             this.$router.push('/')   

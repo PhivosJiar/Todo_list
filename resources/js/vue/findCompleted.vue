@@ -31,7 +31,7 @@ export default {
         return{
             items:[],
             member:{
-                username:"aaa"
+                username:this.$route.query.userId
             },
         }
     },
