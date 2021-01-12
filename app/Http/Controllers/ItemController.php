@@ -109,6 +109,14 @@ class ItemController extends Controller
         return $completedItem;
     }
 
+    public function remarks(Request $request)
+    {
+        $itemId=$request->item["itemid"];
+        $itemReark=$request->item["remarks"];
+        $addRemark = Item::where('id', $itemId)->update(['remarks' => $itemReark]);
+        return $addRemark;
+    }
+
     /**
      * Remove the specified resource from storage.
      *

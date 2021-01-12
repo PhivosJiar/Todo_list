@@ -6,7 +6,7 @@
                 <div class="todoListContainer">
                     <div class="heading">
                         <h2 id="title">TodoList</h2> 
-                            <add-item-form v-on:reloadlist="getList()" />
+    
                     </div>
                         <div  class="listitem">
                             <listview :items="items" v-on:reloadlist="getList() " />
@@ -65,13 +65,12 @@ export default {
 }
 .todoListContainer{
     width:80%;
-    height:60%;
+    height:100%;
     margin:10% auto auto auto;
     background:#ffffff;
-    padding:15% 30% 15% 30%;
+    padding:5% 20% 15% 20%;
 }
 .heading{
-    background: #e6e6e6;
     padding: 10px;
     
 }

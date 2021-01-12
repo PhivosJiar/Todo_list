@@ -26,6 +26,7 @@ Route::prefix('/item')->group( function(){
     Route::delete('/{id}', [ItemController::class, 'destroy']);
     Route::post('/completed', [ItemController::class, 'findcompleted']);
     Route::post('/incompleted', [ItemController::class, 'incompleted']);
+    Route::post('/remarks', [ItemController::class, 'remarks']);
 });
 
 Route::post('/login',[LoginController::class,'login']);

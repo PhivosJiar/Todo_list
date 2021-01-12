@@ -2,7 +2,7 @@ require('./bootstrap');
 
 import Vue from 'vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPlusSquare,faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faPencilAlt, faPlusSquare,faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 
@@ -16,7 +16,7 @@ import Login from './Login/app.vue'
 import Signup from './Login/signup.vue'
 import Completed from './vue/findCompleted'
 import InCompleted from './vue/inCompleted.vue'
-library.add(faPlusSquare,faTrash)
+library.add(faPlusSquare,faTrash,faPencilAlt)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 // import VueRouter from 'vue-router';

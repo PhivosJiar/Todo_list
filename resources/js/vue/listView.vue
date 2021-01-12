@@ -7,8 +7,12 @@
             <span class=" itemText">ITEM</span>
         </td>
         <td class="Itemlist">
-        <span>UserName</span>
+            <span>UserName</span>
         </td>
+        <td class="Itemlist">
+            <span>Remarks</span>
+        </td>
+
         </div>
 
         <div v-for="(item,index) in items" :key="index">
@@ -35,7 +39,7 @@ export default {
 
 <style scoped>
 .item{
-    background: #e6e6e6;
+    background: #f8fafc;
     padding: 5px;
     margin-top: 5px;
     display: flex;

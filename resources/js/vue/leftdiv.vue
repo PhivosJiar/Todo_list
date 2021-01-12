@@ -68,7 +68,7 @@ export default {
       margin-top:0;
       width:15%;
       height:100%;
-      background-image: url("https://img.onl/eptmZi");
+      background-image: url("https://ppt.cc/fqqFjx@.jpg");
       background-repeat: no-repeat;
       background-size: cover;
     }

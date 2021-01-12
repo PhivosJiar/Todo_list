@@ -1,21 +1,24 @@
 <template>
-    <div class="addItem">
-        <input type="text" v-model="item.name" @keyup.enter="addItem()"/>
-       <font-awesome-icon icon="plus-square" 
-       @click="addItem()" 
-       :class="[item.name? 'active':'inactive','plus' ]"
+    <span class="addRemark">   
+        <input type="text" v-model="remark.remarks"  @keyup.enter="addItem()"/>
+        <font-awesome-icon icon="pencil-alt" 
+        @click="addItem()" 
+        class="pencil"
         />
-       
-    </div>
+    </span>
+    
 </template>
-
 <script>
+
+
+
 export default {
+
+    props:['item'],
     data:function(){
         return {
-            item:{
-                name:"",
-                username:this.$route.query.userId
+            remark:{
+                remarks:"",
             }
         }
     },
@@ -25,13 +28,13 @@ export default {
                 return;
             }
 
-            axios.post('api/item/store',{
-                item: this.item                
+            axios.post('api/item/remarks',{
+                item: {remarks:this.remark.remarks , itemid:this.item.id}          
             })
             .then( response => {
-                if(response.status==201){
+                if(response.status==200){
                     this.item.name="";  
-                    this.$emit('reloadlist');
+                    this.$emit('itemchanged');
                 }
             })
             .catch(error =>{
@@ -42,30 +45,32 @@ export default {
 }
 </script>
 <style scoped>
-.addItem{
+.addRemark{
     display: flex;
     justify-content: center;
     align-items: center;
-    width:50%;
+    width: 80%;
+    float: left;
 }
 
 input{
-    background: #ffffff;
+    background: #f8fafc;
     border: 0px;
     outline: none;
     padding: 5px;
     margin-right: 10px;
     width: 100% ;
     border-bottom: 1px solid;
+    border-color: #07294a;
 }
 
 .plus{
     font-size: 20px;
 }
-.active{
-    color:#00CE25;
-}
-.inactive{
-    color:#999999;
+.pencil{
+    float: right;
+    background: #f8fafc;
+    border: none;
+    color: 	#00DD00;
 }
 </style>

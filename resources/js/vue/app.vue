@@ -7,8 +7,16 @@
 
     <div class="todoListContainer">
         <div class="heading">
-            <h2 id="title">TodoList</h2> 
-                <add-item-form v-on:reloadlist="getList()" />
+            <h2 id="title">TodoList</h2>
+                
+                <button CLASS="add" @click="IsShow()">
+                    + ADD NEW
+                </button><br>
+               
+                <span :class="[Show.IsShow ? 'show' : 'hidden'] ">
+                    Enter Item Name
+                    <add-item-form v-on:reloadlist="getList()" />
+                </span>
         </div>
         <div  class="listitem">
         <listview :items="items" v-on:reloadlist="getList() " />
@@ -33,8 +41,11 @@ export default {
         return{
             items:[],
             member:{
-                username:"aaa"
+                username:this.$route.query.userId
             },
+            Show:{
+                IsShow:false,
+            }
         }
     },
     methods:{
@@ -43,12 +54,16 @@ export default {
                 item:this.member
             })
             .then(response=> {
-                this.items = response.data
+                this.items = response.data;
+                this.Show.IsShow=false;
             })
             .catch(error=> {
                 console.log(error);
             })
-        }
+        },
+        IsShow(){
+        return [this.Show.IsShow ? '' : this.Show.IsShow=true];
+    },   
     },
     created(){
         this.getList();
@@ -67,13 +82,12 @@ export default {
 }
 .todoListContainer{
     width:80%;
-    height:60%;
+    height:100%;
     margin:10% auto auto auto;
     background:#ffffff;
-    padding:15% 30% 15% 30%;
+    padding:5% 20% 15% 20%;
 }
 .heading{
-    background: #e6e6e6;
     padding: 10px;
     
 }
@@ -92,5 +106,18 @@ h1{
   margin-top:0;
   height:60%;
   background:#f8fafc;
-    }
+}
+.show{
+
+}
+.hidden{
+display:none;
+}
+.add{
+    background:	 #07294a;
+    width:150px;
+    height: 40px;
+    color:#ffffff;
+    border: none;
+}
 </style>
