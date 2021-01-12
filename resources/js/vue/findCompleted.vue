@@ -26,7 +26,7 @@ export default {
         addItemForm,
         Listview,
         Leftdiv,
-    },
+    }, 
     data:function(){
         return{
             items:[],
