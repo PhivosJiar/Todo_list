@@ -18,7 +18,7 @@
      margin:0 ;
      padding: 0;
      border:0;
-     background:#000000;
+     background:#f8fafc;
      }
      
     .leftnav{
@@ -42,49 +42,56 @@
       margin-left:15%;
       margin-top:0;
       height:100%;
-      background:#dcdcdc;
+      background:#f8fafc;
     }
     .menucontainer{
       color:white;
     }
     li{
-    width: 94px;
+    font-size:16px;
     text-align: left;
     list-style: none;
+    padding:15px;
+    margin:auto 5px;
     }
+    li:hover{
+      background-color: #07294a;
+      cursor: pointer;
+    }
+   
     #app{
       height:100%;
     }
-
+    .router{
+    color:#fff;
+    }
+    .router:hover{
+    color:#fff;
+    text-decoration:none;
+    }
+    .menu-box{
+      padding-left:8px;
+      padding-right:8px;
+    }
+    .menu-logo{
+      font-size:20px;
+      text-align:center;
+      margin:20px 15px 5px 15px;
+      padding-bottom:10px;
+      border-bottom:1px solid #07294a;
+    }
+   
     </style>
-    <body leftmargin = 0 topmargin = 0>
-    <div class="leftnav"> 
-    <div class="leftmask">
-<div class="menucontainer">
-        <nav class="menu">
-            <a id="menubtn" class="toggle-nav" href="#">☰</a>
-            <div class="menu-logo"><a>LOGO</a></div>
-            <ul id="menuUl" class="">
-                <li class="current-active"><a>home</a></li>
-                <li><a>new</a></li>
-                <li><a>products</a></li>
-                <li><a>about</a></li>
-            </ul>
-        </nav>
+    
+<body >
+<div id="app" >
+
+    <!-- <div class="rightview"> -->
+        
+      <router-view ></router-view>
+
+    <!-- </div> -->
 </div>
-    </div>
-  </div>
-    <div class="rightview">
-        <div id="app" >
-          
-
-       
-
-        <router-view ></router-view>
-
-        </div>
-        <!-- <a href="https://github.com/PhivosJiar/Todo_list" >12345</a> -->
-  </div>
     </body>
 
     <script src="{{ mix('js/app.js') }}"></script>

@@ -1,18 +1,48 @@
 <template>
     <div class="item">
+        <td class="Itemlist">
         <input type="checkbox" @change="updateCheck()" v-model="item.completed" />
         <span :class="[item.completed ? 'completed' : '','itemText']">{{item.name}}</span>
+        </td>
         
+        <td class="Itemlist">
+        <span :class="[item.completed ? 'completed' : '','itemText']">{{item.username}}</span>
+        </td>
+        
+        <td class="Itemlist" @click="IsShow()">
+        <span :class="[Show.IsShow ? 'hidden' : 'show']">
+        <span :class="[item.completed ? 'completed' : '','itemText']">{{item.remarks}}</span>
+        <!-- <input type="text" v-model="item.username" /> -->
+        </span>
+        <span :class="[Show.IsShow ? 'show' : 'hidden'] ">
+        <add-remark  :item="item"  v-on:itemchanged="remarkUpdate()"></add-remark>
+        </span>
+   
+        </td>
+        <td class="trash">
         <button @click="removeItem()" class="trashcan">
             <font-awesome-icon icon="trash" /> 
         </button>
-            
+        </td>
+  
     </div>
 </template>
 
 <script>
+import addRemark from './addRemark.vue';
+
+
 export default {
+  components: { addRemark },
     props: ['item'],
+    data:function(){
+    return{
+        Show:{
+            IsShow:false,
+            ShowItem:true
+        }
+        }
+    },
     methods:{
         updateCheck(){
             axios.put('api/item/'+this.item.id,{
@@ -37,8 +67,14 @@ export default {
             .catch( error =>{
                 console.log( error );
             }) 
+        },
+        IsShow(){
+            return [this.Show.IsShow ? '' : this.Show.IsShow=true] ;
+        },        
+        remarkUpdate(){
+            this.Show.IsShow=false;
+            this.$emit('itemchanged');
         }
-
     }
 }
 </script>
@@ -58,9 +94,24 @@ export default {
     align-items:center;
 }
 .trashcan{
-    background: #e6e6e6;
+    background: #f8fafc;
     border: none;
     color: #ff0000;
     outline: none;
 }
+.Itemlist{
+  width: 50%;
+
+}
+tr{
+    width: 100%;
+    height: 100%;
+}
+.show{
+
+}
+.hidden{
+display:none;
+}
+
 </style>

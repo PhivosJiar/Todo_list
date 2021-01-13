@@ -91,6 +91,32 @@ class ItemController extends Controller
         return "Item not found.";
     }
 
+    public function findcompleted(Request $request)
+    {
+        $username=$request->item["username"];
+
+        $completedItem =  $Item =Item::where('username', $username)->where('completed',1)->orderBy('created_at','DESC')->get();
+
+        return $completedItem;
+    }
+
+    public function incompleted(Request $request)
+    {
+        $username=$request->item["username"];
+
+        $completedItem =  $Item =Item::where('username', $username)->where('completed',0)->orderBy('created_at','DESC')->get();
+
+        return $completedItem;
+    }
+
+    public function remarks(Request $request)
+    {
+        $itemId=$request->item["itemid"];
+        $itemReark=$request->item["remarks"];
+        $addRemark = Item::where('id', $itemId)->update(['remarks' => $itemReark]);
+        return $addRemark;
+    }
+
     /**
      * Remove the specified resource from storage.
      *

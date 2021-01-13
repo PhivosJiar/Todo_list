@@ -1,6 +1,6 @@
 <template>
     <div class="addItem">
-        <input type="text" v-model="item.name" />
+        <input type="text" v-model="item.name" @keyup.enter="addItem()"/>
        <font-awesome-icon icon="plus-square" 
        @click="addItem()" 
        :class="[item.name? 'active':'inactive','plus' ]"
@@ -46,15 +46,17 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    width:50%;
 }
 
 input{
-    background: #f7f7f7;
+    background: #ffffff;
     border: 0px;
     outline: none;
     padding: 5px;
     margin-right: 10px;
     width: 100% ;
+    border-bottom: 1px solid;
 }
 
 .plus{

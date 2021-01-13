@@ -10,8 +10,13 @@
   <div class="container">
       
     <label for="uname"><b>Username</b></label>
+     <span class="err">
+    {{this.Verification.err}}
+    </span>
     <input type="text" placeholder="Enter Username" name="uname" required
     v-model="member.username" />
+
+   
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required
@@ -28,7 +33,7 @@
     </div>
     
  
-      <div class="container" style="background-color:#f1f1f1">
+      <div class="container" style="background-color:#ffffff">
     <span class="psw"><a href="#" @click="ToSignup()">Signup </a></span>
   </div>
 
@@ -54,7 +59,8 @@ export default {
             },
             Verification:{
                 pass:"",
-                pass2:""
+                pass2:"",
+                err:""
             
             }
         }
@@ -74,9 +80,11 @@ export default {
             //this.$router.push('/todo')
             this.$router.push({ path: '/todo', query: { userId: this.member.username }})
         }
+        this.Verification.err="Account or Password Incorrect.";
         })
         .catch(error =>{
             console.log(error);
+         
         })        
 
         },
@@ -95,7 +103,7 @@ export default {
 
 <style scoped>
 form {
-  border: 3px solid #f1f1f1;
+  border: 3px solid #ffffff;
  
 }
 
@@ -145,6 +153,11 @@ span.psw {
   float: right;
   padding-top: 16px;
 }
+.err{
+  float:right;
+  color:#ff0000;
+}
+
 @media screen and (max-width: 300px) {
   span.psw {
     display: block;
