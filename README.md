@@ -33,6 +33,7 @@ Laravel 8.x
 
 開啟Terminal→cd至專案目錄中
 <h3>後端</h3>
+
 下載composer
 
 安裝laravel，執行`composer global require laravel/installer`
