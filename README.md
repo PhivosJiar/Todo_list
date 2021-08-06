@@ -39,6 +39,7 @@ Laravel 8.x
 安裝laravel，執行`composer global require laravel/installer`
 
 請確認laravel版本為8.x或更高，若低於Laravel8，因版本相容問題vue會無法正常執行
+
 執行`php artisan --version`
 
 安裝相依套件，執行`composer install`
